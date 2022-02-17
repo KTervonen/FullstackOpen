@@ -10,8 +10,8 @@ const Content = (plop) => {
     return (
         <div>
             <Part pippeli={plop.pippeli} penis={plop.penis}/>
-            <Part pippeli2={plop.pippeli2} penis2={plop.penis2}/>
-            <Part pippeli3={plop.pippeli3} penis3={plop.penis3}/>
+            <Part pippeli={plop.pippeli2} penis={plop.penis2}/>
+            <Part pippeli={plop.pippeli3} penis={plop.penis3}/>
         </div>
     )
 }
@@ -20,10 +20,7 @@ const Part = (props) => {
     return (
         <p>
             {props.pippeli} {props.penis}
-            {props.pippeli2} {props.penis2}
-            {props.pippeli3} {props.penis3}
         </p>
-
 )
 }
 
