@@ -1,27 +1,63 @@
-const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+const Header = (pippeli) => {
+    return (
+        <div>
+            <p>{pippeli.course}</p>
+        </div>
+    )
+}
 
-  return (
-      <div>
-        <h1>{course}</h1>
+const Content = (plop) => {
+    return (
+        <div>
+            <Part pippeli={plop.pippeli} penis={plop.penis}/>
+            <Part pippeli2={plop.pippeli2} penis2={plop.penis2}/>
+            <Part pippeli3={plop.pippeli3} penis3={plop.penis3}/>
+        </div>
+    )
+}
+
+const Part = (props) => {
+    return (
         <p>
-          {part1} {exercises1}
+            {props.pippeli} {props.penis}
+            {props.pippeli2} {props.penis2}
+            {props.pippeli3} {props.penis3}
         </p>
-        <p>
-          {part2} {exercises2}
-        </p>
-        <p>
-          {part3} {exercises3}
-        </p>
-        <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
-      </div>
-  )
+
+)
+}
+
+const Total = (megapylly) => {
+    return (
+        <div>
+            <p>Number of exercises {megapylly.pylly + megapylly.pylly2 + megapylly.pylly3}</p>
+        </div>
+    )
+}
+
+
+const App = () => {
+    const course = 'Half Stack application development'
+    const part1 = 'Fundamentals of React'
+    const exercises1 = 10
+    const part2 = 'Using props to pass data'
+    const exercises2 = 7
+    const part3 = 'State of a component'
+    const exercises3 = 14
+
+    return (
+        <div>
+            <Header course={course}/>
+            <Content pippeli={part1} penis={exercises1}
+                     pippeli2={part2} penis2={exercises2}
+                     pippeli3={part3} penis3={exercises3}
+            />
+            <Total pylly={exercises1} pylly2={exercises2} pylly3={exercises3}/>
+
+
+        </div>
+
+    )
 }
 
 export default App
