@@ -1,27 +1,27 @@
 const Header = (pippeli) => {
-    return (
-        <div>
-            <p>{pippeli.course}</p>
-        </div>
-    )
+    console.log(pippeli)
+    return <h1>{pippeli.course}</h1>
 }
 
 const Content = (plop) => {
     return (
         <div>
-            <Part pippeli={plop.pippeli} penis={plop.penis}/>
-            <Part pippeli={plop.pippeli2} penis={plop.penis2}/>
-            <Part pippeli={plop.pippeli3} penis={plop.penis3}/>
+            <Part tiedot={plop.part1}/>
+            <Part tiedot={plop.part2}/>
+            <Part tiedot={plop.part3}/>
         </div>
     )
 }
 
+// content hakee "part-tehtaalta" vuorotellen 3 riviä tavaraa. Tehdas palauttaa yhden rivin kerrallaan, aina kulloisillakin props-arvoilla. Kaikki
+// sullotaan yhteen div-elementtiin, jonka Content-funktio palauttaa Appissa olevalle kutsulle.
+
 const Part = (props) => {
     return (
         <p>
-            {props.pippeli} {props.penis}
+            {props.tiedot}
         </p>
-)
+    )
 }
 
 const Total = (megapylly) => {
@@ -35,23 +35,30 @@ const Total = (megapylly) => {
 
 const App = () => {
     const course = 'Half Stack application development'
-    const part1 = 'Fundamentals of React'
-    const exercises1 = 10
-    const part2 = 'Using props to pass data'
-    const exercises2 = 7
-    const part3 = 'State of a component'
-    const exercises3 = 14
+    const part1 = {
+        name: 'Fundamentals of React',
+        exercises: 10
+    }
+
+    const part2 = {
+        name: 'Using props to pass data',
+        exercises: 7
+    }
+
+    const part3 = {
+        name: 'State of a component',
+        exercises: 14
+    }
 
     return (
         <div>
-            <Header course={course}/>
-            <Content pippeli={part1} penis={exercises1}
-                     pippeli2={part2} penis2={exercises2}
-                     pippeli3={part3} penis3={exercises3}
+            <Header
+                course={course}/> {/* antaa course-nimiselle headerille oikean arvon, jotta funktio osaa palauttaa oikean tekstin*/}
+            <Content part1={part1}
+                     part2={part2}
+                     part3={part3}
             />
-            <Total pylly={exercises1} pylly2={exercises2} pylly3={exercises3}/>
-
-
+            <Total exercises1={part1.exercises} exercises2={part2.exercises} exercises3={part3.exercises}/>
         </div>
 
     )
