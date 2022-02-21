@@ -3,12 +3,13 @@ const Header = (pippeli) => {
     return <h1>{pippeli.course}</h1>
 }
 
-const Content = (plop) => {
+const Content = (props)  =>
+{
     return (
         <div>
-            <Part tiedot={plop.part1}/>
-            <Part tiedot={plop.part2}/>
-            <Part tiedot={plop.part3}/>
+            <Part part={props.part1}/>
+            <Part part={props.part2}/>
+            <Part part={props.part3}/>
         </div>
     )
 }
@@ -19,15 +20,15 @@ const Content = (plop) => {
 const Part = (props) => {
     return (
         <p>
-            {props.tiedot}
+            {props.part.name} {props.part.exercises}
         </p>
     )
 }
 
-const Total = (megapylly) => {
+const Total = (props) => {
     return (
         <div>
-            <p>Number of exercises {megapylly.pylly + megapylly.pylly2 + megapylly.pylly3}</p>
+            <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
         </div>
     )
 }
@@ -39,25 +40,19 @@ const App = () => {
         name: 'Fundamentals of React',
         exercises: 10
     }
-
     const part2 = {
         name: 'Using props to pass data',
         exercises: 7
     }
-
     const part3 = {
         name: 'State of a component',
         exercises: 14
     }
-
     return (
         <div>
             <Header
                 course={course}/> {/* antaa course-nimiselle headerille oikean arvon, jotta funktio osaa palauttaa oikean tekstin*/}
-            <Content part1={part1}
-                     part2={part2}
-                     part3={part3}
-            />
+            <Content part1={part1} part2={part2} part3={part3}/>
             <Total exercises1={part1.exercises} exercises2={part2.exercises} exercises3={part3.exercises}/>
         </div>
 
