@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
 const Statistics = (props) => {
+
     if (props.text == 'positive') {
         return (
             <p>{props.text + ' ' + props.value + ' %'}</p>
@@ -54,14 +55,26 @@ const App = () => {
                 </button>
 
             </div>
+
+
             <div>
                 <h1>statistics</h1>
-                <Statistics text='good' value={good}/>
-                <Statistics text='neutral' value={neutral}/>
-                <Statistics text='bad' value={bad}/>
-                <Statistics text='all' value={all}/>
-                <Statistics text='average' value={average / all}/>
-                <Statistics text='positive' value={positive / all * 100}/>
+
+                {all > 0 ? (
+                    <>
+                    <Statistics text='good' value={good}/>
+                    <Statistics text='neutral' value={neutral}/>
+                    <Statistics text='bad' value={bad}/>
+                    <Statistics text='all' value={all}/>
+                    <Statistics text='average' value={average / all}/>
+                    <Statistics text='positive' value={positive / all * 100}/>
+                    </>
+
+                    ) : <p>No feedback given</p>
+
+                }
+
+
             </div>
         </div>
     )
