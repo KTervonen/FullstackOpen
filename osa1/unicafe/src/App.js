@@ -9,13 +9,13 @@ const Statistics = (props) => {
         return (
             <tr>
                 <td>{props.text}</td>
-                <td>{props.value}</td>
+                <td>{props.value + '%'}</td>
             </tr>
         )
     }
     return (
         <tr>
-            <td>{props.text + ' '}</td>
+            <td>{props.text}</td>
             <td>{props.value}</td>
         </tr>
 
