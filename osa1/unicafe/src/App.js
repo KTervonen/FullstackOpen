@@ -1,8 +1,11 @@
 import {useState} from 'react'
 
-const Statistics = (props) => {
+const StatisticLine = (props) => {
+    return (<Statistics text={props.text} value={props.value}/>)
+}
 
-    if (props.text == 'positive') {
+const Statistics = (props) => {
+    if (props.text === 'positive') {
         return (
             <p>{props.text + ' ' + props.value + ' %'}</p>
         )
@@ -63,15 +66,15 @@ const App = () => {
 
                 {all > 0 ? (
                     <>
-                    <Statistics text='good' value={good}/>
-                    <Statistics text='neutral' value={neutral}/>
-                    <Statistics text='bad' value={bad}/>
-                    <Statistics text='all' value={all}/>
-                    <Statistics text='average' value={average / all}/>
-                    <Statistics text='positive' value={positive / all * 100}/>
+                        <StatisticLine text='good' value={good}/>
+                        <StatisticLine text='neutral' value={neutral}/>
+                        <StatisticLine text='bad' value={bad}/>
+                        <StatisticLine text='all' value={all}/>
+                        <StatisticLine text='average' value={average / all}/>
+                        <StatisticLine text='positive' value={positive / all * 100}/>
                     </>
 
-                    ) : <p>No feedback given</p>
+                ) : <p>No feedback given</p>
 
                 }
 
