@@ -18,7 +18,6 @@ const Statistics = (props) => {
             <td>{props.text}</td>
             <td>{props.value}</td>
         </tr>
-
     )
 }
 
@@ -83,7 +82,6 @@ const App = () => {
 
                 ) : <p>No feedback given</p>
                 }
-
 
 
             </div>
