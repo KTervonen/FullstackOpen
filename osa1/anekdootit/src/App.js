@@ -25,7 +25,15 @@ const App = () => {
     const [selected, setSelected] = useState(0)
     const [aanet, setAanet] = useState(arvot)
 
-
+    const enitenAania = () => {
+        var suurin = 0;
+        for (let anekdootti = 0; anekdootti < aanet.length; anekdootti+=1) {
+            if (aanet[suurin] <= aanet[anekdootti]) {
+                suurin = anekdootti;
+            }
+        }
+        return suurin
+    }
 
     const nextAnecdote = () => {
         const random = Math.floor(Math.random() * 7)
@@ -44,6 +52,7 @@ const App = () => {
 
     return (
         <div>
+            <h1>Anecdote of the day</h1>
             {anecdotes[selected]}
             <div>
                 This anecdote has been voted {aanet[selected]} times.
@@ -52,6 +61,11 @@ const App = () => {
                 <Button handleClick={vote} text='vote'/>
                 <Button handleClick={nextAnecdote} text='next anecdote'/>
             </div>
+            <h1>Anecdote with most votes</h1>
+            <div>
+                {anecdotes[enitenAania()]}
+            </div>
+
         </div>
 
 )
