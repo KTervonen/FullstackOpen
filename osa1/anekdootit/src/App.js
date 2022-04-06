@@ -19,7 +19,13 @@ const App = () => {
         'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.'
     ]
 
+    const arvot = [0, 0, 0, 0, 0, 0, 0]
+
+
     const [selected, setSelected] = useState(0)
+    const [aanet, setAanet] = useState(arvot)
+
+
 
     const nextAnecdote = () => {
         const random = Math.floor(Math.random() * 7)
@@ -27,11 +33,23 @@ const App = () => {
         setSelected(random)
     }
 
+    const vote = () => {
+        const copy = [...aanet]
+        console.log("arvo ennen kasvatusta " + copy)
+        copy[selected] +=1
+        console.log("arvo kasvatuksen jälkeen " + copy)
+        setAanet(copy)
+    }
+
 
     return (
         <div>
             {anecdotes[selected]}
             <div>
+                This anecdote has been voted {aanet[selected]} times.
+            </div>
+            <div>
+                <Button handleClick={vote} text='vote'/>
                 <Button handleClick={nextAnecdote} text='next anecdote'/>
             </div>
         </div>
